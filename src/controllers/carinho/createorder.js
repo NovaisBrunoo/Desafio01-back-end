@@ -1,13 +1,22 @@
 const knex = require('../../services/connectionSQL');
 
 const createorder = async (req, res) => {
-    const { valor, produto_id } = req.body;
+    const { produto_id,
+        nome_produto,
+        quantidade,
+        descricao,
+        imagem,
+        valor, } = req.body;
     const usuario_id = req.user.id;
 
     try {
         const billingRegistration = {
             usuario_id,
             produto_id,
+            nome_produto,
+            descricao,
+            imagem,
+            quantidade,
             valor,
         }
 

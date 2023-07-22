@@ -13,6 +13,8 @@ const detailProduct = require("../controllers/product/detailProduct");
 const list = require("../controllers/carinho/allList");
 const createorder = require("../controllers/carinho/createorder");
 const schemaProduto = require("../schemas/schemaProduto");
+const DeleteOrder = require("../controllers/carinho/DeleteOrder");
+const UpdateOrder = require("../controllers/carinho/UpdateOrder");
 
 
 router.get("/", (req, res) => {
@@ -28,5 +30,7 @@ router.use(verifylogin);
 router.post("/cadastroproduto", checkInformations(schemaProduto), signInProduct);
 router.post("/criarpedido", createorder);
 router.get("/lista", list);
+router.delete("/lista/:id_pedido", DeleteOrder);
+router.put("/lista/:id_pedido", UpdateOrder);
 
 module.exports = router;
